@@ -2,6 +2,8 @@ import express from "express";
 import jwt, { verify } from "jsonwebtoken";
 import argon2 from "argon2";
 import prisma from "../db/index.js";
+import * as dotenv from 'dotenv';
+dotenv.config()
 
 const router = express.Router();
 
@@ -76,7 +78,7 @@ router.post("/login", async (request, response) => {
                 id: foundUser.id,
               },
             },
-            "thisIsASuperSecretKey"
+            process.env.JWT_HIDDEN_KEY
           );
   
           response.status(200).json({
