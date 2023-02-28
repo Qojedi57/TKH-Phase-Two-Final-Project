@@ -53,3 +53,5 @@ router.post("/signup", async (request, response) => {
     });
   }
 });
+
+export default router;
