@@ -54,4 +54,55 @@ router.post("/signup", async (request, response) => {
   }
 });
 
+router.post("/login", async (request, response) => {
+    try {
+      const foundUser = await prisma.user.findFirstOrThrow({
+        where: {
+          username: request.body.username,
+        },
+      });
+  
+      try {
+        const verifiedPassword = await argon2.verify(
+          foundUser.password,
+          request.body.password
+        );
+  
+        if (verifiedPassword) {
+          const token = jwt.sign(
+            {
+              user: {
+                username: foundUser.username,
+                id: foundUser.id,
+              },
+            },
+            "thisIsASuperSecretKey"
+          );
+  
+          response.status(200).json({
+            success: true,
+            token,
+          });
+        } else {
+          response.status(401).json({
+            success: false,
+            message: "Wrong username or password",
+          });
+        }
+      } catch (e) {
+        response.status(500).json({
+          success: false,
+          message: "Something went wrong",
+        });
+      }
+    } catch (e) {
+      response.status(401).json({
+        success: false,
+        message: "Wrong username or password",
+      });
+    }
+  });
+  
+
+
 export default router;
