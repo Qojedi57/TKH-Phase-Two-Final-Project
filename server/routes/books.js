@@ -1,6 +1,7 @@
 import express from "express";
 import prisma from "../db/index.js";
 
+export default function setupBookRouter(passport) {
 const router = express.Router();
 
 //get all books in database
@@ -62,6 +63,35 @@ router.get("/genre/:genre", async(req, res) => {
 })
 
 
+router.delete(
+    "/:booksId",
+    passport.authenticate("jwt", { session: false }),
+    async function (request, response) {
+      const booksId = parseInt(request.params.bookId);
+      try {
+        await prisma.book.delete({
+          where: {
+            id: booksId,
+          },
+        });
 
+        response.status(200).json({
+          success: true,
+        });
+      } catch (e) {
+        console.log(e);
+        if (e.code == "P2025") {
+          response.status(404).json({
+            success: false,
+          });
+        } else {
+          response.status(500).json({
+            success: false,
+          });
+        }
+    }
+    }
+    );
 
-export default router;
+return router;
+}
