@@ -8,10 +8,37 @@ generator client {
 datasource db {
   provider = "mysql"
   url      = env("DATABASE_URL")
+  relationMode = "prisma"
 }
 
 model User {
   id       Int    @unique @default(autoincrement())
-  username String
+  username String @db.VarChar(255)
   password String
+  // books Book[]
+  authors Author[]
+}
+
+model Book {
+  id       Int    @unique @default(autoincrement())
+  title String 
+  genre String
+  desc String 
+  authorId Int
+  userId Int
+  author Author @relation(fields: [authorId], references: [id])
+  // user User @relation(fields: [userId], references: [id])
+
+  @@index([authorId])
+  // @@index([userId])
+}
+
+model Author {
+  id Int @unique @default(autoincrement())
+  name String
+  books Book[]
+  userId Int
+  user User @relation(fields: [userId], references: [id])
+
+  @@index([userId])
 }
