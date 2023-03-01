@@ -84,4 +84,49 @@ router.get("/genre/:genre", async(req, res) => {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+router.put("/:id", async (req, res) => {
+    const id = req.params.id;
+
+    const editBook = await prisma.book.update({
+        where: {
+            id: id
+        },
+        data: {
+            title: req.body.title,
+            genre: req.body.genre,
+            desc: req.body.desc
+        }
+    })
+
+    res.status(200).json({
+        success: true,
+        editBook
+    })
+});
+
+
+
+
+
+
+
+
+
+
+
 export default router;
