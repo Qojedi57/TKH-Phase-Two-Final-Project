@@ -63,7 +63,7 @@ router.get("/genre/:genre", async(req, res) => {
     router.post(
         "/",
         passport.authenticate("jwt", { session: false }),
-        async function (request, response) {
+        async function (request, response) {""
           const newBooks = await prisma.book.create({
             data: {
               title: request.body.title,
