@@ -59,6 +59,26 @@ router.get("/genre/:genre", async(req, res) => {
         success: true,
         getBookByAuthor
     })
+
+    router.post(
+        "/",
+        passport.authenticate("jwt", { session: false }),
+        async function (request, response) {""
+          const newBooks = await prisma.book.create({
+            data: {
+              title: request.body.title,
+              genre: request.user.id,
+              description: request.body.description,
+            },
+          });
+    
+          console.log(newBooks);
+    
+          response.status(201).json({
+            success: true,
+          });
+        }
+      );
 })
 
 
