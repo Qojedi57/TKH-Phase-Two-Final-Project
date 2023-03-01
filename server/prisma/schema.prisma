@@ -15,7 +15,6 @@ model User {
   id       Int    @unique @default(autoincrement())
   username String @db.VarChar(255)
   password String
-  // books Book[]
   authors Author[]
 }
 
@@ -27,10 +26,8 @@ model Book {
   authorId Int
   userId Int
   author Author @relation(fields: [authorId], references: [id])
-  // user User @relation(fields: [userId], references: [id])
 
   @@index([authorId])
-  // @@index([userId])
 }
 
 model Author {
