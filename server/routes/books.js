@@ -60,6 +60,26 @@ router.get("/genre/:genre", async(req, res) => {
         success: true,
         getBookByAuthor
     })
+
+router.post(
+        "/",
+        passport.authenticate("jwt", { session: false }),
+        async function (request, response) {""
+          const newBooks = await prisma.book.create({
+            data: {
+              title: request.body.title,
+              genre: request.user.id,
+              description: request.body.description,
+            },
+          });
+    
+          console.log(newBooks);
+    
+          response.status(201).json({
+            success: true,
+          });
+        }
+      );
 })
 
 
@@ -92,6 +112,38 @@ router.delete(
     }
     }
     );
+    
+ router.put("/:id", async (req, res) => {
+    const id = req.params.id;
 
-return router;
+    const editBook = await prisma.book.update({
+        where: {
+            id: id
+        },
+        data: {
+            title: req.body.title,
+            genre: req.body.genre,
+            desc: req.body.desc
+        }
+    })
+
+    res.status(200).json({
+        success: true,
+        editBook
+    })
+});
+
+  return router;
 }
+
+
+
+
+
+
+
+
+
+
+
+
