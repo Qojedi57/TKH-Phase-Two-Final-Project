@@ -133,7 +133,7 @@ router.delete(
     })
 });
 
-router.delete("author/:authorid/", passport.authenticate("jwt", { session: false }), async (req, res) => {
+router.delete("author/:authorid", passport.authenticate("jwt", { session: false }), async (req, res) => {
     const authorId = req.params.authorid;
 
     const deleteAuthor = prisma.author.delete({
