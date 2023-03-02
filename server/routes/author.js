@@ -1,5 +1,5 @@
 import express from "express"
-import {prisma} from "../db/index.js"
+import prisma from "../db/index.js"
 
 export default function authorRouter(passport){
     const router = express.Router();
@@ -12,7 +12,7 @@ router.post("/",passport.authenticate("jwt", {session: false}), async (req, res)
             name: req.body.author,
             // description: req.body.description,
             userId: req.user.id,
-        }
+        },
     });
     console.log(newAuthor);
 
