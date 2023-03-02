@@ -14,22 +14,6 @@ router.get("/", async(req, res) => {
     })
 })
 
-//get books by id
-router.get("/:id", async(req, res) => {
-    const id = req.params.id;
-
-    const getBook = await prisma.book.findFirst({
-        where: {
-            id: Number(id)
-        }
-    })
-
-    res.status(200).json({
-        success: true,
-        getBook
-    })
-})
-
 //get book by author id
 router.get("/author/:authorId", async(req, res) => {
     const id = req.params.authorId;
@@ -60,6 +44,22 @@ router.get("/genre/:genre", async(req, res) => {
         success: true,
         getBookByAuthor
     })
+
+//get books by id
+router.get("/:id", async(req, res) => {
+    const id = req.params.id;
+
+    const getBook = await prisma.book.findFirst({
+        where: {
+            id: Number(id)
+        }
+    })
+
+    res.status(200).json({
+        success: true,
+        getBook
+    })
+})
 
 router.post(
         "/",
@@ -111,9 +111,9 @@ router.delete(
         }
     }
     }
-    );
+);
     
- router.put("/:id", async (req, res) => {
+ router.put("/:id", passport.authenticate("jwt", { session: false }), async (req, res) => {
     const id = req.params.id;
 
     const editBook = await prisma.book.update({
@@ -131,6 +131,28 @@ router.delete(
         success: true,
         editBook
     })
+});
+
+router.delete("author/:authorid/", passport.authenticate("jwt", { session: false }), async (req, res) => {
+    const authorId = req.params.authorid;
+
+    const deleteAuthor = prisma.author.delete({
+        where: {
+            id: authorId,
+        }
+    })
+
+    const deleteBooks = prisma.book.deleteMany({
+        where: {
+            authorId: authorId,
+        }
+    })
+
+    const transaction = await prisma.$transaction([deleteBooks, deleteAuthor]);
+
+    console.log(transaction)
+
+    res.status(200)
 });
 
   return router;
