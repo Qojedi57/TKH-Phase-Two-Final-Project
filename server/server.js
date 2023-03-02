@@ -15,7 +15,7 @@ export default function createServer() {
     setupJWTStrategy(passport);
 
     app.use("/auth", authRouter);
-    app.use("/books", bookRouter)
+    app.use("/books", bookRouter(passport));
 
     return app;
 }
