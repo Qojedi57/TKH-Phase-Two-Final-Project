@@ -1,4 +1,6 @@
 import React from 'react'
+import {useForm} from 'react-hook-form'
+import axios from 'axios'
 import {
   ThemeProvider,
   theme,
@@ -80,18 +82,26 @@ const LoginHeader = () => {
 }
 
 const LoginForm = () => {
+    const {register, handleSubmit} = useForm()
+
+    const userLogin = async (data) => {
+        console.log(data);
+        const resp = await axios.post("http://localhost:8080/auth/login", data);
+
+        console.log(resp);
+    }
   return (
     <Box my={8} textAlign='left'>
-      <form>
-
+      <form onSubmit={handleSubmit(userLogin)}>
+        
         <FormControl>
-          <FormLabel>Email address</FormLabel>
-          <Input type='email' placeholder='Enter your email address' />
+          <FormLabel>Username</FormLabel>
+          <Input type='text' placeholder='Enter your username' {...register("username")}/>
         </FormControl>
 
         <FormControl mt={4}>
           <FormLabel>Password</FormLabel>
-          <Input type='password' placeholder='Enter your password' />
+          <Input type='password' placeholder='Enter your password' {...register("password")} />
         </FormControl>
 
         <Stack isInline justifyContent='space-between' mt={4}>
@@ -103,7 +113,7 @@ const LoginForm = () => {
             </Box>
         </Stack>
 
-        <Button variantColor={VARIANT_COLOR}  width='full' mt={4}>Sign In</Button>
+        <Button variantColor={VARIANT_COLOR}  type="submit" width='full' mt={4}>Sign In</Button>
       </form>
     </Box>
   )
