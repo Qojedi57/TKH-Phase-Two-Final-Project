@@ -1,5 +1,6 @@
 import express from "express";
 import morgan from "morgan";
+import cors from "cors";
 import authRouter from "./routes/auth.js";
 import bookRouter from "./routes/books.js";
 import setupJWTStrategy from "./middlewares/auth.js";

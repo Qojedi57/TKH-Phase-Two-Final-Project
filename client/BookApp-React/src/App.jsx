@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import LoginPage from '../Pages/LoginPage'
+import DisplayBooks from "../Pages/DisplayBooks"
 import './App.css'
 
 import { createRoot } from "react-dom/client";
@@ -22,6 +23,10 @@ function App() {
     {
       path:"/login",
       element: <LoginPage/>
+    },
+    {
+      path: "viewbooks",
+      element: <DisplayBooks/>
     }
 
   ])
