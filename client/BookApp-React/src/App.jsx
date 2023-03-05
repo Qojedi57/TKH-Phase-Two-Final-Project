@@ -13,12 +13,14 @@ import {
   createRoutesFromElements,
 } from "react-router-dom";
 import './App.css'
+import Layout from '../components/Layout.jsx';
 
 function App() {
 
   const router = createBrowserRouter([
     {
-      path: "/"
+      path: "/",
+      element: <Layout/>
     },
     {
       path:"/login",
