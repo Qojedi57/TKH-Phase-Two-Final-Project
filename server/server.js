@@ -6,7 +6,7 @@ import bookRouter from "./routes/books.js";
 import setupJWTStrategy from "./middlewares/auth.js";
 import passport from "passport";
 import authorRouter from "./routes/author.js";
-import cors from "cors";
+// import cors from "cors";
 
 export default function createServer() {
     const app = express();
