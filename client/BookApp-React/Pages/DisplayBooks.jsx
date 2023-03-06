@@ -11,7 +11,7 @@ export default function DisplayBooks() {
         const allBooks = await axios.get("http://localhost:8080/books");
         console.log(allBooks);
         if (allBooks.status === 200) {
-          setBooks(allBooks.data);
+          setBooks(allBooks.data.books);
         } else {
           return null;
         }
