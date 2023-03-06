@@ -5,10 +5,11 @@ import bookRouter from "./routes/books.js";
 import setupJWTStrategy from "./middlewares/auth.js";
 import passport from "passport";
 import authorRouter from "./routes/author.js";
+import cors from "cors";
 
 export default function createServer() {
     const app = express();
-
+    app.use(cors())
     app.use(express.json());
 
     app.use(morgan("tiny"));
