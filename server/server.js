@@ -15,7 +15,7 @@ export default function createServer() {
 
     app.use(morgan("tiny"));
 
-    app.use(cors());
+    // app.use(cors());
 
     setupJWTStrategy(passport);
 
