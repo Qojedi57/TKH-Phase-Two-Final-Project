@@ -1,7 +1,6 @@
 import { useState } from 'react'
 import LoginPage from '../Pages/LoginPage'
-import './App.css'
-
+import DisplayBooks from "../Pages/DisplayBooks"
 import { createRoot } from "react-dom/client";
 import {
   createBrowserRouter,
@@ -12,16 +11,22 @@ import {
   createRoutesFromElements,
 } from "react-router-dom";
 import './App.css'
+import Layout from '../components/Layout.jsx';
 
 function App() {
 
   const router = createBrowserRouter([
     {
-      path: "/"
+      path: "/",
+      element: <Layout/>
     },
     {
       path:"/login",
       element: <LoginPage/>
+    },
+    {
+      path: "viewbooks",
+      element: <DisplayBooks/>
     }
 
   ])

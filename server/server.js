@@ -1,5 +1,6 @@
 import express from "express";
 import morgan from "morgan";
+import cors from "cors";
 import authRouter from "./routes/auth.js";
 import bookRouter from "./routes/books.js";
 import setupJWTStrategy from "./middlewares/auth.js";
@@ -13,6 +14,8 @@ export default function createServer() {
     app.use(express.json());
 
     app.use(morgan("tiny"));
+
+    app.use(cors());
 
     setupJWTStrategy(passport);
 
