@@ -1,6 +1,7 @@
 import React from 'react'
 import {useForm} from 'react-hook-form'
 import axios from 'axios'
+import { useState } from 'react'
 import {
   ThemeProvider,
   theme,
@@ -18,7 +19,9 @@ import {
   Input,
   Stack,
   Checkbox,
-  Button
+  Button,
+  Alert,
+  AlertIcon
 } from '@chakra-ui/react'
 
 const VARIANT_COLOR = 'teal'
@@ -81,17 +84,47 @@ const LoginHeader = () => {
   )
 }
 
+
 const LoginForm = () => {
     const {register, handleSubmit} = useForm()
+    const [authSuccess, setAuthSuccess] = useState(false)
+    const [authUnsuccess, setAuthUnsuccess] = useState(false)
 
     const userLogin = async (data) => {
         console.log(data);
-        const resp = await axios.post("http://localhost:8080/auth/login", data);
+        try {
+          const resp = await axios.post("http://localhost:8080/auth/login", data);
 
-        console.log(resp);
+          console.log(resp);
+
+          if(resp.data.success === true){
+            console.log("logged in")
+            setAuthSuccess(true);
+          } 
+      } catch(error) {
+        setAuthUnsuccess(true);
+      }
     }
+
   return (
     <Box my={8} textAlign='left'>
+      {
+        authSuccess && (
+          <Alert status='success'>
+            <AlertIcon />
+            You successfully logged in. Enjoy!
+          </Alert>
+        )
+      }
+
+        {
+        authUnsuccess && (
+          <Alert status='error'>
+            <AlertIcon />
+           Wrong username or password.
+          </Alert>
+        )
+      }
       <form onSubmit={handleSubmit(userLogin)}>
         
         <FormControl>
