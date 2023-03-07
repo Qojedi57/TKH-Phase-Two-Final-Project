@@ -29,6 +29,8 @@ export default function DisplayBooks() {
       {books.map((item) => (
         <div className="Novels">
             <h1>{item.title}</h1>
+            <h2>{item.genre}</h2>
+            <p>{item.desc}</p>
         </div>
       ))}
     </div>
