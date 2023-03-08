@@ -6,6 +6,7 @@ import {
     FormLabel,
     Input,
     Button,
+    Flex
   } from '@chakra-ui/react'
 import { useNavigate } from 'react-router-dom'
   
@@ -41,12 +42,24 @@ export default function () {
     <div>
         <h1 className='heading'>Create Author</h1>
         <form onSubmit={handleSubmit(createAuthor)}>
-        <FormControl>
+        <Flex  width='full' align='center' justifyContent='center'>
+        <FormControl       
+          padding="15px"
+          borderWidth={1}
+          px={4}
+          width='full'
+          maxWidth='500px'
+          borderRadius={4}
+          textAlign='center'
+          boxShadow='lg'>
           <FormLabel>Author Name</FormLabel>
           <Input type='text' placeholder='Enter author name' {...register("author")}/>
-        </FormControl>
 
-        <Button type="submit" width='full' mt={4}>Create Author</Button>
+          <Button type="submit" width='full' mt={4} color="teal">Create Author</Button>
+        </FormControl>
+        </Flex>
+
+        
       </form>
     </div>
   )

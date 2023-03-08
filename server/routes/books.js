@@ -90,9 +90,10 @@ export default function setupBookRouter(passport) {
       async function (request, response) {
         const booksId = parseInt(request.params.booksId);
         try {
-          await prisma.book.delete({
+          await prisma.book.deleteMany({
             where: {
               id: booksId,
+              userId: request.user.id
             },
           });
 
@@ -124,7 +125,8 @@ export default function setupBookRouter(passport) {
         data: {
           title: req.body.title,
           genre: req.body.genre,
-          desc: req.body.desc
+          desc: req.body.desc,
+          userId: req.user.id
         }
       })
 

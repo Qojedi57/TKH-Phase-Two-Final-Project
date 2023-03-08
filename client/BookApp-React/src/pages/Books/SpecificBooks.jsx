@@ -29,7 +29,7 @@ export const SpecificBooks = () => {
     };
   }, [params]);
 
-  const deleteBook = async () => {
+  const deleteBook = async (data) => {
     // console.log(data);
     try {
         const token = localStorage.getItem("token")

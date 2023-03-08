@@ -7,6 +7,7 @@ import {
     FormLabel,
     Input,
     Button,
+    Flex
   } from '@chakra-ui/react'
 
 export default function CreateBook() {
@@ -41,16 +42,27 @@ export default function CreateBook() {
     <div>
       <h1 className='heading'>Create Book</h1>
       <form onSubmit={handleSubmit(createBook)}>
-      <FormControl>
+      <Flex  width='full' align='center' justifyContent='center'>
+      <FormControl       
+        padding="15px"
+        borderWidth={1}
+        px={4}
+        width='full'
+        maxWidth='500px'
+        borderRadius={4}
+        textAlign='center'
+        boxShadow='lg'>
         <FormLabel>Title</FormLabel>
         <Input type='text' placeholder='Enter book title' {...register("title")}/>
         <FormLabel>Description</FormLabel>
         <Input type='text' placeholder='Enter book description' {...register("desc")}/>
         <FormLabel>Genre</FormLabel>
         <Input type='text' placeholder='Enter book genre' {...register("genre")}/>
+        <Button type="submit" width='full' mt={4} color="teal">Create Book</Button>
       </FormControl>
 
-    <Button type="submit" width='full' mt={4}>Create Book</Button>
+    
+    </Flex>
   </form>
 </div>
   )

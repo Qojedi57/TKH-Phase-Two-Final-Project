@@ -79,11 +79,11 @@ export default function SpecificAuthor() {
           <button onClick={deleteAuthor}>Delete Author/Books</button>
         </div>
         {books.map((item) => (
-         <Link to={`/viewbooks/${item.id}`}>
-            <Container border="1px" bg="Gray" p={4} color="white">
-              <h1>{item.title}</h1>
-              <h2>{item.genre}</h2>
-              <p>{item.desc}</p>
+         <Link className="viewBookLink" to={`/viewbooks/${item.id}`}>
+            <Container border="1px" p={4} color="white">
+              <h1 className="teal">Title: {item.title}</h1>
+              <h2 className="teal">Genre: {item.genre}</h2>
+              <p className="teal">Desc: {item.desc}</p>
             </Container>
           </Link>
         ))}
