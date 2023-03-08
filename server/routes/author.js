@@ -46,7 +46,7 @@ router.get("/", async (req, res) => {
 
     res.status(200).json({
       success: true,
-      books: allAuthors
+      allAuthors
     })
 })
 
