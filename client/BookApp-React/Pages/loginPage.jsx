@@ -82,7 +82,7 @@ const LoginHeader = () => {
     <Box textAlign='center'>
       <Heading>Sign In to Your Account</Heading>
       <Text>
-        Or <Link color={`${VARIANT_COLOR}.500`}>Signup if you don't have an account</Link>
+        Or <Link color={`${VARIANT_COLOR}.500`}>Signup If You Don't Have An Account</Link>
       </Text>
     </Box>
   )
