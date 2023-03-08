@@ -72,10 +72,12 @@ export default function SpecificAuthor() {
   
     return (
       <div>
-        <h1>{author.name}</h1>
-        <Link to ={`createbook/${params.id}`}>Create Books</Link>
-        <Link to={`editauthor/${params.id}`}>Edit Author</Link>
-        <button onClick={deleteAuthor}>Delete Author/Books</button>
+        <h1 className='heading'>{author.name}</h1>
+        <div className='links'>
+          <Link to ={`createbook/${params.id}`}>Create Books</Link>
+          <Link to={`editauthor/${params.id}`}>Edit Author</Link>
+          <button onClick={deleteAuthor}>Delete Author/Books</button>
+        </div>
         {books.map((item) => (
          <Link to={`/viewbooks/${item.id}`}>
             <Container border="1px" bg="Gray" p={4} color="white">

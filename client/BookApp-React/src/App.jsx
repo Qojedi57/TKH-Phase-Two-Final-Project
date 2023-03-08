@@ -1,7 +1,7 @@
 import { Children, useState } from 'react'
-import LoginPage from '../Pages/LoginPage'
-import DisplayBooks from "../Pages/Books/DisplayBooks"
-import SpecificBooks from "../Pages/Books/SpecificBooks"
+import LoginPage from './pages/LoginPage'
+import DisplayBooks from "./pages/Books/DisplayBooks"
+import SpecificBooks from "./pages/Books/SpecificBooks"
 import { createRoot } from "react-dom/client";
 import {
   createBrowserRouter,
@@ -12,13 +12,13 @@ import {
   createRoutesFromElements,
 } from "react-router-dom";
 import './App.css'
-import Layout from '../components/Layout.jsx';
-import CreateAuthor from '../Pages/Author/CreateAuthor';
-import ViewAuthors from '../Pages/Author/ViewAuthors';
-import SpecificAuthor from '../Pages/Author/SpecificAuthor';
-import CreateBook from '../Pages/Books/CreateBook';
-import EditAuthor from '../Pages/Author/EditAuthor';
-import EditBook from '../Pages/Books/EditBook';
+import Layout from './components/Layout.jsx';
+import CreateAuthor from './pages/Author/CreateAuthor';
+import ViewAuthors from './pages/Author/ViewAuthors';
+import SpecificAuthor from './pages/Author/SpecificAuthor';
+import CreateBook from './pages/Books/CreateBook';
+import EditAuthor from './pages/Author/EditAuthor';
+import EditBook from './pages/Books/EditBook';
 
 function App() {
 

@@ -53,9 +53,11 @@ export const SpecificBooks = () => {
   console.log(books)
   return (
     <div>
-      <h1>{books.title}</h1>
-      <Link to={`editbook/${params.id}`}>Edit Book</Link>
-      <button onClick={deleteBook}>Delete Book</button>
+      <h1 className='heading'>{books.title}</h1>
+      <div className='links'>
+        <Link to={`editbook/${params.id}`}>Edit Book</Link>
+        <button onClick={deleteBook}>Delete Book</button>
+      </div>
     </div>
   )
 }

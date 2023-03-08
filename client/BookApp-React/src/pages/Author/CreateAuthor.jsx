@@ -2,36 +2,25 @@ import React, {useState} from 'react'
 import {useForm} from 'react-hook-form'
 import axios from 'axios'
 import {
-    ThemeProvider,
-    theme,
-    ColorModeProvider,
-    CSSReset,
-    Box,
-    Flex,
-    IconButton,
-    useColorMode,
-    Heading,
-    Text,
-    Link,
     FormControl,
     FormLabel,
     Input,
     Button,
   } from '@chakra-ui/react'
-import { useNavigate, useParams } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
+  
 
-export default function EditAuthor() {
+export default function () {
     const navigate = useNavigate();
     const {register, handleSubmit} = useForm()
     const [error, setError] = useState(false)
-    let params = useParams();
 
-    const editAuthor = async (data) => {
+    const createAuthor = async (data) => {
         // console.log(data);
         try {
             const token = localStorage.getItem("token")
             console.log(token)
-          const res = await axios.put(`http://localhost:8080/author/${params.id}`, 
+          const res = await axios.post("http://localhost:8080/author", 
             data, 
             {
                 headers: {
@@ -42,7 +31,7 @@ export default function EditAuthor() {
             );
  
           console.log(res);
-          navigate(`/viewauthors/${params.id}`)
+          navigate("/viewauthors")
       } catch(error) {
         setError(true);
       }
@@ -50,13 +39,14 @@ export default function EditAuthor() {
 
   return (
     <div>
-        <form onSubmit={handleSubmit(editAuthor)}>
+        <h1 className='heading'>Create Author</h1>
+        <form onSubmit={handleSubmit(createAuthor)}>
         <FormControl>
           <FormLabel>Author Name</FormLabel>
-          <Input type='text' placeholder='Enter new author name' {...register("author")}/>
+          <Input type='text' placeholder='Enter author name' {...register("author")}/>
         </FormControl>
 
-        <Button type="submit" width='full' mt={4}>Edit Author</Button>
+        <Button type="submit" width='full' mt={4}>Create Author</Button>
       </form>
     </div>
   )

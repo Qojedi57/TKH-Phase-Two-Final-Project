@@ -2,25 +2,36 @@ import React, {useState} from 'react'
 import {useForm} from 'react-hook-form'
 import axios from 'axios'
 import {
+    ThemeProvider,
+    theme,
+    ColorModeProvider,
+    CSSReset,
+    Box,
+    Flex,
+    IconButton,
+    useColorMode,
+    Heading,
+    Text,
+    Link,
     FormControl,
     FormLabel,
     Input,
     Button,
   } from '@chakra-ui/react'
-import { useNavigate } from 'react-router-dom'
-  
+import { useNavigate, useParams } from 'react-router-dom'
 
-export default function () {
+export default function EditAuthor() {
     const navigate = useNavigate();
     const {register, handleSubmit} = useForm()
     const [error, setError] = useState(false)
+    let params = useParams();
 
-    const createAuthor = async (data) => {
+    const editAuthor = async (data) => {
         // console.log(data);
         try {
             const token = localStorage.getItem("token")
             console.log(token)
-          const res = await axios.post("http://localhost:8080/author", 
+          const res = await axios.put(`http://localhost:8080/author/${params.id}`, 
             data, 
             {
                 headers: {
@@ -31,7 +42,7 @@ export default function () {
             );
  
           console.log(res);
-          navigate("/viewauthors")
+          navigate(`/viewauthors/${params.id}`)
       } catch(error) {
         setError(true);
       }
@@ -39,13 +50,14 @@ export default function () {
 
   return (
     <div>
-        <form onSubmit={handleSubmit(createAuthor)}>
+        <h1 className='heading'>Edit Author</h1>
+        <form onSubmit={handleSubmit(editAuthor)}>
         <FormControl>
           <FormLabel>Author Name</FormLabel>
-          <Input type='text' placeholder='Enter author name' {...register("author")}/>
+          <Input type='text' placeholder='Enter new author name' {...register("author")}/>
         </FormControl>
 
-        <Button type="submit" width='full' mt={4}>Create Author</Button>
+        <Button type="submit" width='full' mt={4}>Edit Author</Button>
       </form>
     </div>
   )

@@ -1,1 +1,19 @@
+.heading {
+    padding: 50px;
+    font-size: 40px;
+    text-align: center;
+}
 
+.authors {
+    font-size: 30px;
+    text-align: center;
+}
+
+.links {
+    font-size: 25px;
+    font-weight: bold;
+}
+
+.links a {
+    margin: 10px
+}

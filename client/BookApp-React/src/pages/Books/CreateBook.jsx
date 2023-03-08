@@ -9,20 +9,19 @@ import {
     Button,
   } from '@chakra-ui/react'
 
-
-export default function EditBook() {
+export default function CreateBook() {
     const navigate = useNavigate();
     const {register, handleSubmit} = useForm();
     let params = useParams();
     const [error, setError] = useState(false)
 
-    const editBook = async (data) => {
+    const createBook = async (data) => {
         // console.log(data);
         try {
             const token = localStorage.getItem("token")
             console.log(token)
             console.log(params.id)
-            const res = await axios.put(`http://localhost:8080/books/${params.id}`, 
+            const res = await axios.post(`http://localhost:8080/books/${params.id}`, 
             data, 
             {
                 headers: {
@@ -33,26 +32,26 @@ export default function EditBook() {
             );
  
           console.log(res);
-          navigate(`/viewbooks/${params.id}`)
+          navigate(`/viewauthors/${params.id}`)
       } catch(error) {
         setError(true);
       }
     }
   return (
     <div>
-    <form onSubmit={handleSubmit(editBook)}>
-    <FormControl>
-      <FormLabel>Title</FormLabel>
-      <Input type='text' placeholder='Enter new book title' {...register("title")}/>
-      <FormLabel>Description</FormLabel>
-      <Input type='text' placeholder='Enter new book description' {...register("desc")}/>
-      <FormLabel>Genre</FormLabel>
-      <Input type='text' placeholder='Enter new book genre' {...register("genre")}/>
-    </FormControl>
+      <h1 className='heading'>Create Book</h1>
+      <form onSubmit={handleSubmit(createBook)}>
+      <FormControl>
+        <FormLabel>Title</FormLabel>
+        <Input type='text' placeholder='Enter book title' {...register("title")}/>
+        <FormLabel>Description</FormLabel>
+        <Input type='text' placeholder='Enter book description' {...register("desc")}/>
+        <FormLabel>Genre</FormLabel>
+        <Input type='text' placeholder='Enter book genre' {...register("genre")}/>
+      </FormControl>
 
-    <Button type="submit" width='full' mt={4}>Edit Book</Button>
+    <Button type="submit" width='full' mt={4}>Create Book</Button>
   </form>
 </div>
   )
 }
-
