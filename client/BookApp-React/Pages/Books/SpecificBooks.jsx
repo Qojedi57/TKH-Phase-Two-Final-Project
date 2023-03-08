@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react'
-import { useParams } from 'react-router-dom';
+import { useParams, Link } from 'react-router-dom';
 import axios from 'axios';
 
 export const SpecificBooks = () => {
@@ -31,7 +31,8 @@ export const SpecificBooks = () => {
   console.log(books)
   return (
     <div>
-      <p>{books.title}</p>
+      <h1>{books.title}</h1>
+      <Link to={`editbook/${params.id}`}>Edit Book</Link>
     </div>
   )
 }

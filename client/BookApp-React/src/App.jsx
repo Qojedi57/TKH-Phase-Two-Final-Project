@@ -18,6 +18,7 @@ import ViewAuthors from '../Pages/Author/ViewAuthors';
 import SpecificAuthor from '../Pages/Author/SpecificAuthor';
 import CreateBook from '../Pages/Books/CreateBook';
 import EditAuthor from '../Pages/Author/EditAuthor';
+import EditBook from '../Pages/Books/EditBook';
 
 function App() {
 
@@ -35,6 +36,10 @@ function App() {
           element:<SpecificBooks/>
         },
         {
+          path: "/viewbooks/:id/editbook/:id",
+          element: <EditBook/>
+        },
+        {
           path: "/createauthor",
           element: <CreateAuthor/>
         },
@@ -47,11 +52,11 @@ function App() {
           element: <SpecificAuthor/>
         },
         {
-          path: "viewauthors/:id/createbook/:id",
+          path: "/viewauthors/:id/createbook/:id",
           element: <CreateBook/>
         },
         {
-          path: "viewauthors/:id/editauthor/:id",
+          path: "/viewauthors/:id/editauthor/:id",
           element: <EditAuthor/>
         }
       ]   
