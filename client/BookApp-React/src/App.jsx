@@ -15,6 +15,7 @@ import './App.css'
 import Layout from '../components/Layout.jsx';
 import CreateAuthor from '../Pages/CreateAuthor/CreateAuthor';
 import ViewAuthors from '../Pages/ViewAuthors';
+import SpecificAuthor from '../Pages/SpecificAuthor';
 
 function App() {
 
@@ -38,6 +39,10 @@ function App() {
         {
           path: "/viewauthors",
           element: <ViewAuthors/>
+        },
+        {
+          path: "/viewauthors/:id",
+          element: <SpecificAuthor/>
         }
       ]   
     },

@@ -50,7 +50,23 @@ router.get("/", async (req, res) => {
     })
 })
 
+router.get("/:id", async (req, res) => {
+    const allAuthors = await prisma.author.findFirst({
+        where: {
+            id: parseInt(req.params.id)
+        },
+    });
+
+    res.status(200).json({
+      success: true,
+      allAuthors
+    })
+})
+
 return router;
 }
+
+
+
 
 

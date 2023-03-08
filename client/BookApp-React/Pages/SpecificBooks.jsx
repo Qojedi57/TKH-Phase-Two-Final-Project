@@ -31,15 +31,6 @@ export const SpecificBooks = () => {
   console.log(books)
   return (
     <div>
-      {/* {
-        books && books.length >= 1 ?  
-        books.map((data) => (
-        <div key={data.id}>
-          <p>{data.title}</p>
-        </div>
-        
-        )) : (<p>Failed to get data</p>)
-      } */}
       <p>{books.title}</p>
     </div>
   )

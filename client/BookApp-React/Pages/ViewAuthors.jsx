@@ -29,9 +29,9 @@ export default function ViewAuthors() {
           {authors.map((item) => (
            
             <div className="authorsmain">
-               {/* <Link to= {`/viewbooks/${item.id}`}> */}
+              <Link to= {`/viewauthors/${item.id}`}>
                 <h1>{item.name}</h1>
-                {/* </Link> */}
+              </Link>
             </div>
           ))}
         </div>
