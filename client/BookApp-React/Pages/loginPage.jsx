@@ -24,7 +24,11 @@ import {
   AlertIcon
 } from '@chakra-ui/react'
 
+import { SunIcon, MoonIcon} from '@chakra-ui/icons'
+
 const VARIANT_COLOR = 'teal'
+
+
 
 const LoginPage = () => {
   return (
@@ -65,7 +69,7 @@ const ThemeSelector = () => {
   return (
     <Box textAlign='right' py={4}>
       <IconButton
-        icon={colorMode === 'light' ? 'moon' : 'sun'}
+        icon={colorMode === 'light' ? <MoonIcon/> : <SunIcon/>}
         onClick={toggleColorMode}
         variant='ghost'
       />
@@ -78,7 +82,7 @@ const LoginHeader = () => {
     <Box textAlign='center'>
       <Heading>Sign In to Your Account</Heading>
       <Text>
-        Or <Link color={`${VARIANT_COLOR}.500`}>start your 14 days trial</Link>
+        Or <Link color={`${VARIANT_COLOR}.500`}>Signup if you don't have an account</Link>
       </Text>
     </Box>
   )
