@@ -98,8 +98,8 @@ const LoginForm = () => {
           console.log(resp);
 
           if(resp.data.success === true){
-            console.log("logged in")
             setAuthSuccess(true);
+            localStorage.setItem("token", resp.data.token)
           } 
       } catch(error) {
         setAuthUnsuccess(true);
