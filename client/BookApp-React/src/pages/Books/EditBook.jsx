@@ -7,6 +7,7 @@ import {
     FormLabel,
     Input,
     Button,
+    Flex
   } from '@chakra-ui/react'
 
 
@@ -42,16 +43,28 @@ export default function EditBook() {
     <div>
       <h1 className='heading'>Edit Book</h1>
       <form onSubmit={handleSubmit(editBook)}>
-      <FormControl>
+      <Flex  width='full' align='center' justifyContent='center'>
+      <FormControl       
+        padding="15px"
+        borderWidth={1}
+        px={4}
+        width='full'
+        maxWidth='500px'
+        borderRadius={4}
+        textAlign='center'
+        boxShadow='lg'>
         <FormLabel>Title</FormLabel>
         <Input type='text' placeholder='Enter new book title' {...register("title")}/>
         <FormLabel>Description</FormLabel>
         <Input type='text' placeholder='Enter new book description' {...register("desc")}/>
         <FormLabel>Genre</FormLabel>
         <Input type='text' placeholder='Enter new book genre' {...register("genre")}/>
-      </FormControl>
 
-      <Button type="submit" width='full' mt={4}>Edit Book</Button>
+        <Button type="submit" width='full' mt={4} color="teal">Edit Book</Button>
+      </FormControl>
+      </Flex>
+
+      
     </form>
   </div>
   )

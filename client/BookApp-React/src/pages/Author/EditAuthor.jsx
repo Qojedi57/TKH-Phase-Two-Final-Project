@@ -52,12 +52,24 @@ export default function EditAuthor() {
     <div>
         <h1 className='heading'>Edit Author</h1>
         <form onSubmit={handleSubmit(editAuthor)}>
-        <FormControl>
+        <Flex  width='full' align='center' justifyContent='center'>
+        <FormControl       
+          padding="15px"
+          borderWidth={1}
+          px={4}
+          width='full'
+          maxWidth='500px'
+          borderRadius={4}
+          textAlign='center'
+          boxShadow='lg'>
           <FormLabel>Author Name</FormLabel>
           <Input type='text' placeholder='Enter new author name' {...register("author")}/>
-        </FormControl>
 
-        <Button type="submit" width='full' mt={4}>Edit Author</Button>
+          <Button type="submit" width='full' mt={4} color="teal">Edit Author</Button>
+        </FormControl>
+        </Flex>
+
+        
       </form>
     </div>
   )
