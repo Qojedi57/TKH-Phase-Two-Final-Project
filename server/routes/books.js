@@ -18,7 +18,7 @@ export default function setupBookRouter(passport) {
   router.get("/author/:authorId", async (req, res) => {
     const id = req.params.authorId;
 
-    const getBookByAuthor = await prisma.book.findFirst({
+    const getBookByAuthor = await prisma.book.findMany({
       where: {
         authorId: Number(id)
       }
@@ -34,7 +34,7 @@ export default function setupBookRouter(passport) {
   router.get("/genre/:genre", async (req, res) => {
     const id = req.params.genre;
 
-    const getBookByAuthor = await prisma.book.findFirst({
+    const getBookByAuthor = await prisma.book.findMany({
       where: {
         genre: id
       }

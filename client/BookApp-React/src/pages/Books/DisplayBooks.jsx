@@ -29,6 +29,7 @@ export default function DisplayBooks() {
   //Eduardo map throught the books state. And display the data. Could do it here or make a new component that takes in props
   return (
     <div className="Novels">
+      <h1 className='heading'>Books</h1>
       {books.map((item) => (
          <Link to={`/viewbooks/${item.id}`}>
        <Container border="1px" bg="Gray" p={4} color="white">
