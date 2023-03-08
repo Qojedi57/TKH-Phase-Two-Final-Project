@@ -13,6 +13,7 @@ import {
 } from "react-router-dom";
 import './App.css'
 import Layout from '../components/Layout.jsx';
+import CreateAuthor from '../Pages/CreateAuthor/CreateAuthor';
 
 function App() {
 
@@ -32,6 +33,10 @@ function App() {
     {
       path: "/viewbooks/:id",
       element:<SpecificBooks/>
+    },
+    {
+      path: "/createauthor",
+      element: <CreateAuthor/>
     }
 
   ])
