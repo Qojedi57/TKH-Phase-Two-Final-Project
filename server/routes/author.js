@@ -40,5 +40,17 @@ router.put("/:authorId",passport.authenticate("jwt", {session: false}), async (r
         message: "author name has been edited."
     });
 })
+
+router.get("/", async (req, res) => {
+    const allAuthors = await prisma.author.findMany();
+
+    res.status(200).json({
+      success: true,
+      books: allAuthors
+    })
+})
+
 return router;
 }
+
+

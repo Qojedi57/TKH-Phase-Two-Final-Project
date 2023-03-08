@@ -85,11 +85,10 @@ export default function setupBookRouter(passport) {
     });
 
 
-    router.delete(
-      "/:booksId",
-      passport.authenticate("jwt", { session: false }),
+    router.delete("/:booksId", passport.authenticate("jwt", { session: false }),
+    
       async function (request, response) {
-        const booksId = parseInt(request.params.bookId);
+        const booksId = parseInt(request.params.booksId);
         try {
           await prisma.book.delete({
             where: {
