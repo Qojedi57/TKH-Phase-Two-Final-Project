@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react'
-import { useParams, Link } from 'react-router-dom';
+import { useParams, Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { Container} from "@chakra-ui/react";
 
@@ -8,6 +8,7 @@ export default function SpecificAuthor() {
     const [author, setAuthor] = useState([]);
     const [books, setBooks] = useState([]);
     const [error, setError] = useState(false);
+    const navigate = useNavigate();
 
     useEffect(() => {
       const fetchAuthor = async () => {
@@ -46,12 +47,35 @@ export default function SpecificAuthor() {
       return () => {
       };
     }, [params]);
+
+
+    const deleteAuthor = async (data) => {
+      // console.log(data);
+      try {
+          const token = localStorage.getItem("token")
+          console.log(token)
+          const res = await axios.delete(`http://localhost:8080/books/author/${params.id}`, 
+          {
+              headers: {
+                  Authorization: `Bearer ${token}`,
+                 },
+          }
+         
+          );
+
+
+        navigate("/viewauthors")
+    } catch(error) {
+      setError(true);
+    }
+  }
   
     return (
       <div>
         <h1>{author.name}</h1>
         <Link to ={`createbook/${params.id}`}>Create Books</Link>
         <Link to={`editauthor/${params.id}`}>Edit Author</Link>
+        <button onClick={deleteAuthor}>Delete Author/Books</button>
         {books.map((item) => (
          <Link to={`/viewbooks/${item.id}`}>
             <Container border="1px" bg="Gray" p={4} color="white">
