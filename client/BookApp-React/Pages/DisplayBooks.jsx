@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { Link, useParams } from "react-router-dom";
 import { SpecificBooks } from "./SpecificBooks";
+import { Container} from "@chakra-ui/react";
 
 export default function DisplayBooks() {
   const [books, setBooks] = useState([]);
@@ -29,18 +30,15 @@ export default function DisplayBooks() {
   return (
     <div className="Novels">
       {books.map((item) => (
-       
-        <div className="Novels">
-           <Link to= {`/viewbooks/${item.id}`}>
-               <h1>{item.title}</h1>
-               <h2>{item.genre}</h2>
-               <p>{item.desc}</p>
-            </Link>
-            {/* <h1>{item.title}</h1>
+         <Link to={`/viewbooks/${item.id}`}>
+       <Container border="1px" bg="Gray" p={4} color="white">
+            <h1>{item.title}</h1>
             <h2>{item.genre}</h2>
-            <p>{item.desc}</p> */}
-        </div>
+            <p>{item.desc}</p>
+            </Container>
+       </Link>
+       
       ))}
     </div>
   );
-};
+}
