@@ -13,9 +13,11 @@ import {
 } from "react-router-dom";
 import './App.css'
 import Layout from '../components/Layout.jsx';
-import CreateAuthor from '../Pages/CreateAuthor/CreateAuthor';
-import ViewAuthors from '../Pages/ViewAuthors';
-import SpecificAuthor from '../Pages/SpecificAuthor';
+import CreateAuthor from '../Pages/Author/CreateAuthor';
+import ViewAuthors from '../Pages/Author/ViewAuthors';
+import SpecificAuthor from '../Pages/Author/SpecificAuthor';
+import CreateBook from '../Pages/CreateBook';
+import EditAuthor from '../Pages/Author/EditAuthor';
 
 function App() {
 
@@ -43,6 +45,14 @@ function App() {
         {
           path: "/viewauthors/:id",
           element: <SpecificAuthor/>
+        },
+        {
+          path: "viewauthors/:id/createbook/:id",
+          element: <CreateBook/>
+        },
+        {
+          path: "viewauthors/:id/editauthor/:id",
+          element: <EditAuthor/>
         }
       ]   
     },

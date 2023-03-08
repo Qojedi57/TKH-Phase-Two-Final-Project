@@ -9,6 +9,8 @@ export default function Navbar() {
         <nav>
           <Link to="viewbooks">Books</Link>
           <Link to="login">Login</Link>
+          <Link to="viewauthors">Authors</Link>
+          <Link to="createauthor">Create Author</Link>
         </nav>
       </header>
     </div>
