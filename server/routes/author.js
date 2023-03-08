@@ -25,7 +25,8 @@ router.post("/",passport.authenticate("jwt", {session: false}), async (req, res)
 router.put("/:authorId",passport.authenticate("jwt", {session: false}), async (req, res) => {
     const updateAuthor = await prisma.author.update({
         where: {
-            id: parseInt(req.params.authorId)
+            id: parseInt(req.params.authorId),
+            userId: req.user.id
         },
         data: {
             name: req.body.author,
@@ -40,5 +41,33 @@ router.put("/:authorId",passport.authenticate("jwt", {session: false}), async (r
         message: "author name has been edited."
     });
 })
+
+router.get("/", async (req, res) => {
+    const allAuthors = await prisma.author.findMany();
+
+    res.status(200).json({
+      success: true,
+      allAuthors
+    })
+})
+
+router.get("/:id", async (req, res) => {
+    const allAuthors = await prisma.author.findFirst({
+        where: {
+            id: parseInt(req.params.id)
+        },
+    });
+
+    res.status(200).json({
+      success: true,
+      allAuthors
+    })
+})
+
 return router;
 }
+
+
+
+
+

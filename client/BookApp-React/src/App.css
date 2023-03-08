@@ -1,1 +1,47 @@
+.heading {
+    padding: 50px;
+    font-size: 40px;
+    text-align: center;
+}
 
+.authors {
+    font-size: 30px;
+    text-align: center;
+    color: teal;
+}
+
+.links {
+    font-size: 25px;
+    font-weight: bold;
+}
+
+.links a {
+    margin: 10px
+}
+
+.inputContainer {
+    display: flex;
+    justify-content: center;
+    
+}
+
+.inputBar {
+    border: 1px solid black;
+    outline: none;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    width: 300px;
+    height: 35px;
+    font-size: 20px;
+}
+
+
+
+.viewBookLink {
+    padding: 5px;
+}
+
+.teal {
+    color: teal;
+    font-size: 25px;
+}

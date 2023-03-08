@@ -18,7 +18,7 @@ export default function setupBookRouter(passport) {
   router.get("/author/:authorId", async (req, res) => {
     const id = req.params.authorId;
 
-    const getBookByAuthor = await prisma.book.findFirst({
+    const getBookByAuthor = await prisma.book.findMany({
       where: {
         authorId: Number(id)
       }
@@ -34,7 +34,7 @@ export default function setupBookRouter(passport) {
   router.get("/genre/:genre", async (req, res) => {
     const id = req.params.genre;
 
-    const getBookByAuthor = await prisma.book.findFirst({
+    const getBookByAuthor = await prisma.book.findMany({
       where: {
         genre: id
       }
@@ -85,15 +85,15 @@ export default function setupBookRouter(passport) {
     });
 
 
-    router.delete(
-      "/:booksId",
-      passport.authenticate("jwt", { session: false }),
+    router.delete("/:booksId", passport.authenticate("jwt", { session: false }),
+    
       async function (request, response) {
-        const booksId = parseInt(request.params.bookId);
+        const booksId = parseInt(request.params.booksId);
         try {
-          await prisma.book.delete({
+          await prisma.book.deleteMany({
             where: {
               id: booksId,
+              userId: request.user.id
             },
           });
 
@@ -125,7 +125,8 @@ export default function setupBookRouter(passport) {
         data: {
           title: req.body.title,
           genre: req.body.genre,
-          desc: req.body.desc
+          desc: req.body.desc,
+          userId: req.user.id
         }
       })
 
