@@ -1,11 +1,12 @@
 import React, {useState, useEffect} from 'react'
-import { useParams, Link } from 'react-router-dom';
+import { useParams, Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
 export const SpecificBooks = () => {
   let params = useParams();
   const [books, setBooks] = useState([]);
   const [error, setError] = useState(false);
+  const navigate = useNavigate();
   useEffect(() => {
     const fetchBooks = async () => {
       try {
@@ -28,11 +29,33 @@ export const SpecificBooks = () => {
     };
   }, [params]);
 
+  const deleteBook = async () => {
+    // console.log(data);
+    try {
+        const token = localStorage.getItem("token")
+        console.log(token)
+        const res = await axios.delete(`http://localhost:8080/books/${params.id}`, 
+        {
+            headers: {
+                Authorization: `Bearer ${token}`,
+               },
+        }
+       
+        );
+
+
+      navigate("/viewbooks")
+  } catch(error) {
+    setError(true);
+  }
+}
+
   console.log(books)
   return (
     <div>
       <h1>{books.title}</h1>
       <Link to={`editbook/${params.id}`}>Edit Book</Link>
+      <button onClick={deleteBook}>Delete Book</button>
     </div>
   )
 }
