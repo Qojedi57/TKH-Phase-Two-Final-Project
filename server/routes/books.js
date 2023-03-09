@@ -118,7 +118,7 @@ export default function setupBookRouter(passport) {
     router.put("/:id", passport.authenticate("jwt", { session: false }), async (req, res) => {
       const id = req.params.id;
 
-      const editBook = await prisma.book.update({
+      const editBook = await prisma.book.updateMany({
         where: {
           id: Number(id)
         },

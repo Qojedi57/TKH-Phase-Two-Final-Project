@@ -23,7 +23,7 @@ router.post("/",passport.authenticate("jwt", {session: false}), async (req, res)
 
 //updates author
 router.put("/:authorId",passport.authenticate("jwt", {session: false}), async (req, res) => {
-    const updateAuthor = await prisma.author.update({
+    const updateAuthor = await prisma.author.updateMany({
         where: {
             id: parseInt(req.params.authorId),
             userId: req.user.id
