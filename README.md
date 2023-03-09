@@ -3,6 +3,7 @@
 Created a CRUB full stack app that allows user to create, delete, edit, and update books on the database using the front-end
 
 Backend Tech Stack: Express/Node.js, Argon2, JWT, Passport JWT, Prisma, PlanetScale(MySQL)
+
 FrontEnd Tech Stack: React.js, CharkaUI, CSS, React-Router-DOM
 
 Public Routes
