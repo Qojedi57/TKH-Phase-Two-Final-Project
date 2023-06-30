@@ -28,8 +28,6 @@ import { SunIcon, MoonIcon} from '@chakra-ui/icons'
 
 const VARIANT_COLOR = 'teal'
 
-
-
 const LoginPage = () => {
   return (
     <ThemeProvider theme={theme}>
