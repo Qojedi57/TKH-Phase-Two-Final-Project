@@ -95,7 +95,7 @@ const LoginForm = () => {
     const userLogin = async (data) => {
         console.log(data);
         try {
-          const resp = await axios.post("http://localhost:8080/auth/login", data);
+          const resp = await axios.post("https://finalprojectphase2.onrender.com/auth/login", data);
 
           console.log(resp);
 
