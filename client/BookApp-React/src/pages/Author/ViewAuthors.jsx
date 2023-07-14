@@ -8,7 +8,7 @@ export default function ViewAuthors() {
       useEffect(() => {
         const fetchAuthors = async () => {
           try {
-            const allAuthors = await axios.get("http://localhost:8080/author");
+            const allAuthors = await axios.get("https://finalprojectphase2.onrender.com/author");
             console.log(allAuthors.data.allAuthors);
             if (allAuthors.status === 200) {
               setAuthor(allAuthors.data.allAuthors);

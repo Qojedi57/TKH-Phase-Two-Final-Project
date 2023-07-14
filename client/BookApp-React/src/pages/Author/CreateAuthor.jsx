@@ -21,7 +21,7 @@ export default function () {
         try {
             const token = localStorage.getItem("token")
             console.log(token)
-          const res = await axios.post("http://localhost:8080/author", 
+          const res = await axios.post("https://finalprojectphase2.onrender.com/author", 
             data, 
             {
                 headers: {

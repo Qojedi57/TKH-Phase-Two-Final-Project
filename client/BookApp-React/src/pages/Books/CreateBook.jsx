@@ -22,7 +22,7 @@ export default function CreateBook() {
             const token = localStorage.getItem("token")
             console.log(token)
             console.log(params.id)
-            const res = await axios.post(`http://localhost:8080/books/${params.id}`, 
+            const res = await axios.post(`https://finalprojectphase2.onrender.com/books/${params.id}`, 
             data, 
             {
                 headers: {

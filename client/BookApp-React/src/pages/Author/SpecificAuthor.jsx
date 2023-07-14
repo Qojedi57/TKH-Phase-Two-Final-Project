@@ -13,7 +13,7 @@ export default function SpecificAuthor() {
     useEffect(() => {
       const fetchAuthor = async () => {
         try {
-          const allAuthors = await axios.get(`http://localhost:8080/author/${params.id}`);
+          const allAuthors = await axios.get(`https://finalprojectphase2.onrender.com/author/${params.id}`);
           if (allAuthors.status === 200) {
             console.log(allAuthors.data)
             setAuthor(allAuthors.data.allAuthors);
@@ -28,7 +28,7 @@ export default function SpecificAuthor() {
 
       const fetchBooks = async () => {
         try {
-          const allBooks = await axios.get(`http://localhost:8080/books/author/${params.id}`);
+          const allBooks = await axios.get(`https://finalprojectphase2.onrender.com/books/author/${params.id}`);
           console.log(allBooks);
           if (allBooks.status === 200) {
             setBooks(allBooks.data.getBookByAuthor);
@@ -54,7 +54,7 @@ export default function SpecificAuthor() {
       try {
           const token = localStorage.getItem("token")
           console.log(token)
-          const res = await axios.delete(`http://localhost:8080/books/author/${params.id}`, 
+          const res = await axios.delete(`https://finalprojectphase2.onrender.com/books/author/${params.id}`, 
           {
               headers: {
                   Authorization: `Bearer ${token}`,

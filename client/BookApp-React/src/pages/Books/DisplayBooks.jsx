@@ -13,7 +13,7 @@ export default function DisplayBooks() {
   useEffect(() => {
     const fetchBooks = async () => {
       try {
-        const allBooks = await axios.get("http://localhost:8080/books");
+        const allBooks = await axios.get("https://finalprojectphase2.onrender.com/books");
         console.log(allBooks);
         if (allBooks.status === 200) {
           setBooks(allBooks.data.books);

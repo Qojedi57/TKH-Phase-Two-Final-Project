@@ -10,7 +10,7 @@ export const SpecificBooks = () => {
   useEffect(() => {
     const fetchBooks = async () => {
       try {
-        const allBooks = await axios.get(`http://localhost:8080/books/${params.id}`);
+        const allBooks = await axios.get(`https://finalprojectphase2.onrender.com/books/${params.id}`);
         // console.log(allBooks);
         if (allBooks.status === 200) {
           setBooks(allBooks.data.getBook);
@@ -34,7 +34,7 @@ export const SpecificBooks = () => {
     try {
         const token = localStorage.getItem("token")
         console.log(token)
-        const res = await axios.delete(`http://localhost:8080/books/${params.id}`, 
+        const res = await axios.delete(`https://finalprojectphase2.onrender.com/books/${params.id}`, 
         {
             headers: {
                 Authorization: `Bearer ${token}`,
